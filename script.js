@@ -1,3 +1,14 @@
+// Buttons
+let numeros = document.querySelectorAll(".numero")
+
+let clear = document.querySelector("#clear");
+let deletE = document.querySelector("#delete");
+
+let display = document.querySelector("#display")
+let displayValue = 0
+
+// Functions
+
 function add(a, b){
     return a + b;
 };
@@ -31,4 +42,14 @@ function operate(operator, a, b){
         default:
             break;
     }
+}
+
+// Event listeners
+
+
+for(let i = 0; i < numeros.length; i++){
+    numeros[i].addEventListener("click", function (){
+        display.textContent += numeros[i].value
+        displayValue = display.textContent
+    })
 }

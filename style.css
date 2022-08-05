@@ -11,21 +11,25 @@ body{
 .clear-delete{
     display: flex;
     justify-content: space-around;
+    margin-top: 15px;
+
 }
 
-.display{
-    height: 2rem;
+#display{
+    height: 4rem;
     width: 100%;
     background-color: white;
     text-align: right;
 }
-/* .operators{
-    margin: 0 auto;
-} */
+.operators{
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+}
 
 .operators button{
-    width: 24%;
-    height: 40px;
+    width: 25%;
+    height: 50px;
     margin: 0;
     border: 1px solid rgb(9, 9, 37);
 }
