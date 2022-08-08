@@ -31,6 +31,7 @@ function multiply(a, b){
 };
 
 function divide(a, b){
+    if(b == 0){alert("Dividir por 0 ? realllyyyyy?")}
     return a / b;
 };
 
