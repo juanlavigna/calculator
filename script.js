@@ -1,11 +1,20 @@
 // Buttons
-let numeros = document.querySelectorAll(".numero")
+let numeros = document.querySelectorAll(".numero");
+let operadores = document.querySelectorAll(".operador");
+let equal = document.querySelector("#equal")
 
 let clear = document.querySelector("#clear");
 let deletE = document.querySelector("#delete");
 
-let display = document.querySelector("#display")
-let displayValue = 0
+let display = document.querySelector("#display");
+
+let firstOp;
+let secondOp;
+let result;
+
+let displayValue 
+
+// display.textContent = 0
 
 // Functions
 
@@ -27,16 +36,16 @@ function divide(a, b){
 
 function operate(operator, a, b){
     switch (operator) {
-        case add:
+        case "add":
             return add(a, b);
             break;
-        case substract:
+        case "substract":
             return substract(a, b);
             break;
-        case multiply:  
+        case "multiply":  
             return multiply(a, b) ;
             break;
-        case divide:
+        case "divide":
             return divide(a, b);
             break;
         default:
@@ -44,12 +53,48 @@ function operate(operator, a, b){
     }
 }
 
-// Event listeners
+function clearDisplay(){
+    display.textContent = "";
+    displayValue = 0
+}
 
+// Event listeners
 
 for(let i = 0; i < numeros.length; i++){
     numeros[i].addEventListener("click", function (){
+        if(isNaN(displayValue)){display.textContent = ""};
         display.textContent += numeros[i].value
-        displayValue = display.textContent
+        displayValue = display.textContent 
+        if(firstOp){secondOp = +display.textContent}
     })
 }
+
+let firstOperator = ""
+let secondOperator
+for(let i = 0; i< operadores.length; i++){
+    operadores[i].addEventListener("click", function(){
+        if(firstOperator){
+            firstOperator = operadores[i].value
+            display.textContent = operadores[i].textContent
+            secondOp = 0
+            displayValue = firstOperator
+        }
+        if(!firstOperator){
+            firstOperator = operadores[i].value
+            display.textContent = operadores[i].textContent
+            firstOp = +displayValue
+            displayValue = firstOperator
+        }
+    })
+}
+
+clear.addEventListener("click", clearDisplay)
+
+equal.addEventListener("click", function (){
+    display.textContent = operate(firstOperator, firstOp, secondOp)
+    firstOp = +display.textContent
+})
+
+
+
+
