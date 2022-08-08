@@ -54,8 +54,7 @@ function operate(operator, a, b){
 }
 
 function clearDisplay(){
-    display.textContent = "";
-    displayValue = 0
+    document.location.reload()
 }
 
 // Event listeners
